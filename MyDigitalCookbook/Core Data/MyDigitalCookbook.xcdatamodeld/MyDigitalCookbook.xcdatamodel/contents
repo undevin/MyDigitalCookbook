@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
         <attribute name="directions" optional="YES" attributeType="String" defaultValueString="Add Directions"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="ingredients" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="Add Recipe Name"/>
         <attribute name="uuid" attributeType="String" defaultValueString=""/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-45" positionY="0" width="128" height="103"/>
+        <element name="Recipe" positionX="-45" positionY="0" width="128" height="118"/>
     </elements>
 </model>

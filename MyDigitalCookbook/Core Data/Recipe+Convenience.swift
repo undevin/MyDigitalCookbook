@@ -14,6 +14,7 @@ extension Recipe {
         self.ingredients = ingredients
         self.directions = directions
         self.uuid = uuid
+        self.image = image
     }
     
     static func ==(lhs: Recipe, rhs: Recipe) -> Bool {

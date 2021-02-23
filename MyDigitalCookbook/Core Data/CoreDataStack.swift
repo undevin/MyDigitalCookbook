@@ -9,9 +9,9 @@ import CoreData
 
 enum CoreDataStack {
     
-    static let container: NSPersistentContainer = {
+    static let container: NSPersistentCloudKitContainer = {
         
-        let container = NSPersistentContainer(name: "MyDigitalCookbook")
+        let container = NSPersistentCloudKitContainer(name: "MyDigitalCookbook")
         container.loadPersistentStores { (_, error) in
             if let error = error {
                 fatalError("Error loading persistent store; \(error)")

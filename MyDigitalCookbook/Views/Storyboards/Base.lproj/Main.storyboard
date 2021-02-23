@@ -49,7 +49,7 @@
                                 <connections>
                                     <outlet property="recipeImageView" destination="JLF-Vs-NnC" id="RdE-Ud-Auj"/>
                                     <outlet property="recipeNameLabel" destination="6Pi-hc-q86" id="8sc-SV-0hz"/>
-                                    <segue destination="y7F-fT-3Kf" kind="show" identifier="toRecipeDetails" id="aGc-8K-ldC"/>
+                                    <segue destination="y7F-fT-3Kf" kind="presentation" identifier="toRecipeDetails" id="aGc-8K-ldC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -171,20 +171,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hzQ-5N-gm8" id="4Qm-9e-pcl">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO9-jr-2HJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="119"/>
-                                                    <connections>
-                                                        <segue destination="coU-4o-w7X" kind="embed" id="Koo-Xt-kKO"/>
-                                                    </connections>
-                                                </containerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="CO9-jr-2HJ" secondAttribute="trailing" id="7P4-U9-VPa"/>
-                                                <constraint firstAttribute="bottom" secondItem="CO9-jr-2HJ" secondAttribute="bottom" id="RvP-Wy-q3Y"/>
-                                                <constraint firstItem="CO9-jr-2HJ" firstAttribute="top" secondItem="4Qm-9e-pcl" secondAttribute="top" id="Zfh-3R-m49"/>
-                                                <constraint firstItem="CO9-jr-2HJ" firstAttribute="leading" secondItem="4Qm-9e-pcl" secondAttribute="leading" id="b9u-Dl-7qi"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -221,43 +207,9 @@
             </objects>
             <point key="canvasLocation" x="-173.91304347826087" y="53.571428571428569"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="MvF-Sp-hl3">
-            <objects>
-                <viewController id="coU-4o-w7X" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v62-fr-5bx">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="119"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oYh-7U-OF6">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="119"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF5-u4-71t">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="119"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="+"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="oYh-7U-OF6" firstAttribute="top" secondItem="v62-fr-5bx" secondAttribute="top" id="Ng4-TX-Nvc"/>
-                            <constraint firstItem="RF5-u4-71t" firstAttribute="leading" secondItem="v62-fr-5bx" secondAttribute="leading" id="box-6U-DMp"/>
-                            <constraint firstItem="RF5-u4-71t" firstAttribute="top" secondItem="v62-fr-5bx" secondAttribute="top" id="fRk-6D-3Cd"/>
-                            <constraint firstAttribute="trailing" secondItem="RF5-u4-71t" secondAttribute="trailing" id="jfN-uq-njk"/>
-                            <constraint firstAttribute="bottom" secondItem="RF5-u4-71t" secondAttribute="bottom" id="qta-qv-ULg"/>
-                            <constraint firstAttribute="trailing" secondItem="oYh-7U-OF6" secondAttribute="trailing" id="sFS-e8-RJt"/>
-                            <constraint firstItem="oYh-7U-OF6" firstAttribute="leading" secondItem="v62-fr-5bx" secondAttribute="leading" id="wIG-Tc-DrW"/>
-                            <constraint firstAttribute="bottom" secondItem="oYh-7U-OF6" secondAttribute="bottom" id="z8d-aA-xnZ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="400-8d-lTT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2341" y="54"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aGc-8K-ldC"/>
+        <segue reference="0YM-8y-Zku"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
