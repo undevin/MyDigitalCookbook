@@ -21,7 +21,8 @@ class RecipeController {
     
     // MARK: - Methods
     func createRecipeWith(name: String, ingredients: String, directions: String) {
-        Recipe(name: name, ingredients: ingredients, directions: directions)
+        let newRecipe = Recipe(name: name, ingredients: ingredients, directions: directions)
+        recipes.append(newRecipe)
         CoreDataStack.saveContext()
     }
     

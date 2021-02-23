@@ -12,6 +12,30 @@ class RecipeListTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        RecipeController.shared.fetchRecipes()
+    }
+    
+    // MARK: - Properties
+    var refresher: UIRefreshControl = UIRefreshControl()
+    
+    
+    // MARK: - Methods
+    func setupView() {
+        refresher.attributedTitle = NSAttributedString(string: "Pull to view new recipes")
+        refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        tableView.addSubview(refresher)
+    }
+    
+    @objc func loadData() {
+        RecipeController.shared.fetchRecipes()
+        tableView.reloadData()
+        self.refresher.endRefreshing()
     }
     
     // MARK: - Table view data source
