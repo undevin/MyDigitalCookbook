@@ -24,5 +24,7 @@ class RecipeTableViewCell: UITableViewCell {
     func updateViews() {
         guard let recipe = recipe else { return }
         recipeNameLabel.text = recipe.name
+        let image = RecipeController.shared.loadImage(recipe: recipe)
+        recipeImageView.image = image
     }
 }//End of Class

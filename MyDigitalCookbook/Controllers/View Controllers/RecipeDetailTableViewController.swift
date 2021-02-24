@@ -27,8 +27,8 @@ class RecipeDetailTableViewController: UITableViewController {
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = recipeNameTextField.text, !name.isEmpty,
-              let ingredients = ingredientsTextView.text, !ingredients.isEmpty,
-              let directions = directionsTextView.text, !directions.isEmpty else { return }
+              let ingredients = ingredientsTextView.text,
+              let directions = directionsTextView.text else { return }
         if let recipe = recipe {
             RecipeController.shared.updateRecipe(recipe: recipe, name: name, ingredients: ingredients, directions: directions)
         } else {

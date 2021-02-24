@@ -27,7 +27,7 @@ class RecipeListTableViewController: UITableViewController {
     
     // MARK: - Methods
     func setupView() {
-        refresher.attributedTitle = NSAttributedString(string: "Pull to view new recipes")
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh recipes!")
         refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
         tableView.addSubview(refresher)
     }

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit
 
 class RecipeController {
     
@@ -42,5 +43,18 @@ class RecipeController {
         CoreDataStack.saveContext()
         fetchRecipes()
     }
+    
+    func saveImage(recipe: Recipe, image: UIImage) {
+        let imageData = image.jpegData(compressionQuality: 0.5)
+        recipe.image?.image = imageData
+        CoreDataStack.saveContext()
+    }
+    
+    func loadImage(recipe: Recipe) -> UIImage {
+        guard let imageData = recipe.image?.image else { return UIImage(named: "food-default")! }
+        let image = UIImage(data: imageData)
+        return image ?? UIImage(named: "food-default")!
+    }
+    
 }//End of Class
 
