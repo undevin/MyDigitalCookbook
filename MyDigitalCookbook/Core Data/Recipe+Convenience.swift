@@ -8,12 +8,13 @@
 import CoreData
 
 extension Recipe {
-    @discardableResult convenience init(name: String, ingredients: String, directions: String, uuid: String = UUID().uuidString, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, ingredients: String, directions: String, uuid: String = UUID().uuidString, image: Data, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.ingredients = ingredients
         self.directions = directions
         self.uuid = uuid
+        self.image = image
     }
     
     static func ==(lhs: Recipe, rhs: Recipe) -> Bool {

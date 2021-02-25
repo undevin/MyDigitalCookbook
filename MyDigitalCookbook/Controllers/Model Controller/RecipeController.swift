@@ -21,8 +21,9 @@ class RecipeController {
     }()
     
     // MARK: - Methods
-    func createRecipeWith(name: String, ingredients: String, directions: String) {
-        let newRecipe = Recipe(name: name, ingredients: ingredients, directions: directions)
+    func createRecipeWith(name: String, ingredients: String, directions: String, image: Data?) {
+        guard let image = image else { return }
+        let newRecipe = Recipe(name: name, ingredients: ingredients, directions: directions, image: image)
         recipes.append(newRecipe)
         CoreDataStack.saveContext()
     }
@@ -31,10 +32,12 @@ class RecipeController {
         self.recipes = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
     }
     
-    func updateRecipe(recipe: Recipe, name: String, ingredients: String, directions: String) {
+    func updateRecipe(recipe: Recipe, name: String, ingredients: String, directions: String, image: Data?) {
+        guard let image = image else { return }
         recipe.name = name
         recipe.ingredients = ingredients
         recipe.directions = directions
+        recipe.image = image
         CoreDataStack.saveContext()
     }
     
@@ -44,17 +47,17 @@ class RecipeController {
         fetchRecipes()
     }
     
-    func saveImage(recipe: Recipe, image: UIImage) {
-        let imageData = image.jpegData(compressionQuality: 0.5)
-        recipe.image?.image = imageData
-        CoreDataStack.saveContext()
-    }
-    
-    func loadImage(recipe: Recipe) -> UIImage {
-        guard let imageData = recipe.image?.image else { return UIImage(named: "food-default")! }
-        let image = UIImage(data: imageData)
-        return image ?? UIImage(named: "food-default")!
-    }
+//    func saveImage(recipe: Recipe, image: UIImage) {
+//        let imageData = image.jpegData(compressionQuality: 0.7)
+//        recipe.image = imageData
+//        CoreDataStack.saveContext()
+//    }
+//    
+//    func loadImage(recipe: Recipe) -> UIImage {
+//        guard let imageData = recipe.image else { return UIImage(named: "food-default")! }
+//        let image = UIImage(data: imageData)
+//        return image ?? UIImage(named: "food-default")!
+//    }
     
 }//End of Class
 
