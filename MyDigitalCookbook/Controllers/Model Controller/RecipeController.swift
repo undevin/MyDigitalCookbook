@@ -21,9 +21,9 @@ class RecipeController {
     }()
     
     // MARK: - Methods
-    func createRecipeWith(name: String, ingredients: String, directions: String, image: Data?) {
+    func createRecipeWith(name: String, image: Data?) {
         guard let image = image else { return }
-        let newRecipe = Recipe(name: name, ingredients: ingredients, directions: directions, image: image)
+        let newRecipe = Recipe(name: name, image: image)
         recipes.append(newRecipe)
         CoreDataStack.saveContext()
     }
@@ -32,32 +32,29 @@ class RecipeController {
         self.recipes = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
     }
     
-    func updateRecipe(recipe: Recipe, name: String, ingredients: String, directions: String, image: Data?) {
+    func updateRecipe(recipe: Recipe, name: String, image: Data?) {
         guard let image = image else { return }
         recipe.name = name
-        recipe.ingredients = ingredients
-        recipe.directions = directions
         recipe.image = image
         CoreDataStack.saveContext()
     }
     
     func deleteRecipe(recipe: Recipe) {
+        guard let index = recipes.firstIndex(of: recipe) else { return }
+        recipes.remove(at: index)
         CoreDataStack.context.delete(recipe)
         CoreDataStack.saveContext()
         fetchRecipes()
     }
     
-//    func saveImage(recipe: Recipe, image: UIImage) {
-//        let imageData = image.jpegData(compressionQuality: 0.7)
-//        recipe.image = imageData
-//        CoreDataStack.saveContext()
-//    }
-//    
-//    func loadImage(recipe: Recipe) -> UIImage {
-//        guard let imageData = recipe.image else { return UIImage(named: "food-default")! }
-//        let image = UIImage(data: imageData)
-//        return image ?? UIImage(named: "food-default")!
-//    }
+    func addIngredientTo(recipe: Recipe, ingredient: Ingredient) {
+        recipe.ingredients?.addingObjects(from: [ingredient])
+        CoreDataStack.saveContext()
+    }
     
+    func addDirectionsTo(recipe: Recipe, direction: Direction) {
+        recipe.directions?.addingObjects(from: [direction])
+        CoreDataStack.saveContext()
+    }
 }//End of Class
 
