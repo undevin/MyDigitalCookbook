@@ -24,7 +24,12 @@ class RecipeDetailViewController: UIViewController {
     }
     
     // MARK: - Properties
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet {
+            loadViewIfNeeded()
+            updateViews()
+        }
+    }
     var image: UIImage?
     var emptyArray: [String] = []
     
@@ -35,7 +40,12 @@ class RecipeDetailViewController: UIViewController {
         if let recipe = recipe {
             RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
         } else {
-            RecipeController.shared.createRecipeWith(name: name, image: image)
+            if photoImageView.image != nil {
+                RecipeController.shared.createRecipeWith(name: name, image: image)
+            } else {
+                let image = UIImage(named: "food-default")?.jpegData(compressionQuality: 0.5)
+                RecipeController.shared.createRecipeWith(name: name, image: image)
+            }
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -63,6 +73,7 @@ class RecipeDetailViewController: UIViewController {
         guard let recipe = recipe,
               let image = recipe.image else { return }
         recipeNameTextField.text = recipe.name
+        self.title = recipe.name
         photoImageView.image = UIImage(data: image)
     }
     
@@ -93,7 +104,7 @@ class RecipeDetailViewController: UIViewController {
 // MARK: - Extensions
 extension RecipeDetailViewController: PhotoSelectorDelegate {
     func photoPickerSelected(image: UIImage) {
-        self.image = image
+        self.photoImageView.image = image
     }
 }//End of Extension
 

@@ -197,14 +197,40 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" id="ft4-kI-ToW" customClass="RecipeTableViewCell" customModule="MyDigitalCookbook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="271"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ft4-kI-ToW" id="an1-MJ-fEk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwJ-J8-gan">
+                                                    <rect key="frame" x="16" y="16" width="382" height="190"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="190" id="ygk-Ep-p0K"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(recipe name)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8F-u0-CmJ">
+                                                    <rect key="frame" x="16" y="222" width="382" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fwJ-J8-gan" firstAttribute="centerX" secondItem="an1-MJ-fEk" secondAttribute="centerX" id="CH0-rW-X7p"/>
+                                                <constraint firstItem="fwJ-J8-gan" firstAttribute="leading" secondItem="an1-MJ-fEk" secondAttribute="leading" constant="16" id="FGI-Tx-6Ms"/>
+                                                <constraint firstItem="fwJ-J8-gan" firstAttribute="leading" secondItem="v8F-u0-CmJ" secondAttribute="leading" id="Hsd-Xc-h8M"/>
+                                                <constraint firstAttribute="bottom" secondItem="v8F-u0-CmJ" secondAttribute="bottom" constant="28" id="PIr-ek-L6b"/>
+                                                <constraint firstItem="v8F-u0-CmJ" firstAttribute="trailing" secondItem="fwJ-J8-gan" secondAttribute="trailing" id="T9m-LW-uYz"/>
+                                                <constraint firstItem="fwJ-J8-gan" firstAttribute="top" secondItem="an1-MJ-fEk" secondAttribute="top" constant="16" id="dId-Vo-uis"/>
+                                                <constraint firstItem="v8F-u0-CmJ" firstAttribute="top" secondItem="fwJ-J8-gan" secondAttribute="bottom" constant="16" id="eRj-pn-qPQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="fwJ-J8-gan" secondAttribute="trailing" constant="16" id="xdM-XY-gFd"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="lBR-mI-8IF" kind="show" id="AQL-L7-VKB"/>
+                                            <outlet property="recipeImageView" destination="fwJ-J8-gan" id="NgT-HF-cJ7"/>
+                                            <outlet property="recipeNameLabel" destination="v8F-u0-CmJ" id="LO9-hW-h3L"/>
+                                            <segue destination="lBR-mI-8IF" kind="show" identifier="toRecipeDetails" id="AQL-L7-VKB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -232,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmq-sO-TdE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277" y="576"/>
+            <point key="canvasLocation" x="1276.8115942028987" y="575.89285714285711"/>
         </scene>
         <!--New Recipe-->
         <scene sceneID="dVV-LF-1qO">
@@ -539,7 +565,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rFv-Bz-e3q"/>
+        <segue reference="AQL-L7-VKB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
