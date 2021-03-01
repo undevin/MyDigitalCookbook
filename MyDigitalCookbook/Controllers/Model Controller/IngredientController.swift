@@ -20,8 +20,8 @@ class IngredientController {
     
     // MARK: - Methods
     func createIngredientWith(name: String, recipe: Recipe) {
-        let ingredient = Ingredient(name: name, recipe: recipe)
-        RecipeController.shared.addIngredientTo(recipe: recipe, ingredient: ingredient)
+        Ingredient(name: name, recipe: recipe)
+        CoreDataStack.saveContext()
     }
     
     func updateIngredient(name: String, ingredient: Ingredient) {

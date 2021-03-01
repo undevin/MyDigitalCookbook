@@ -13,9 +13,9 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
-//    @IBOutlet weak var ingredientView: UIView!
-//    @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,7 +31,10 @@ class RecipeDetailViewController: UIViewController {
         }
     }
     var image: UIImage?
-    var emptyArray: [String] = []
+    var ingredient: Ingredient?
+    var direction: Direction?
+    var ingredients: [String] = []
+    var directions: [String] = []
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -39,19 +42,18 @@ class RecipeDetailViewController: UIViewController {
               let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
         if let recipe = recipe {
             RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
+        } else if let recipe = recipe, photoImageView.image == nil {
+            let image = UIImage(named: "food-default")?.jpegData(compressionQuality: 0.5)
+            RecipeController.shared.createRecipeWith(name: name, image: image)
         } else {
-            if photoImageView.image != nil {
-                RecipeController.shared.createRecipeWith(name: name, image: image)
-            } else {
-                let image = UIImage(named: "food-default")?.jpegData(compressionQuality: 0.5)
-                RecipeController.shared.createRecipeWith(name: name, image: image)
-            }
+            RecipeController.shared.createRecipeWith(name: name, image: image)
         }
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        
+        addIngredientToTable()
+        recipeItemTextField.text = ""
     }
     
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
@@ -79,10 +81,20 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    func addIngredientToTable() {
+        guard let recipe = recipe,
+              let ingredient = recipeItemTextField.text, !ingredient.isEmpty else { return }
+        IngredientController.shared.createIngredientWith(name: ingredient, recipe: recipe)
+        ingredients.append(ingredient)
+        tableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -110,3 +122,17 @@ extension RecipeDetailViewController: IngredientTableViewDelegate {
         self.recipe?.ingredients = recipe.ingredients
     }
 }//End of Extension
+
+extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        ingredients.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeDetailCell", for: indexPath)
+        let ingredient = ingredients[indexPath.row]
+        cell.textLabel?.text = ingredient
+        
+        return cell
+    }
+}

@@ -20,8 +20,8 @@ class DirectionController {
     
     // MARK: - Methods
     func addDirectionTo(recipe: Recipe, direction: String) {
-        let direction = Direction(directions: direction, recipe: recipe)
-        RecipeController.shared.addDirectionsTo(recipe: recipe, direction: direction)
+        Direction(directions: direction, recipe: recipe)
+        CoreDataStack.saveContext()
     }
     
     func updateDirection(directions: String, direction: Direction) {

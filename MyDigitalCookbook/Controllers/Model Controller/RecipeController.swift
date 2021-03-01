@@ -48,12 +48,10 @@ class RecipeController {
     }
     
     func addIngredientTo(recipe: Recipe, ingredient: Ingredient) {
-        recipe.ingredients?.addingObjects(from: [ingredient])
         CoreDataStack.saveContext()
     }
     
     func addDirectionsTo(recipe: Recipe, direction: Direction) {
-        recipe.directions?.addingObjects(from: [direction])
         CoreDataStack.saveContext()
     }
 }//End of Class
