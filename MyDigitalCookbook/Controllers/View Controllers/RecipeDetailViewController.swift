@@ -13,8 +13,9 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var ingredientsView: UIView!
+    @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
     
     
     // MARK: - Lifecycle
@@ -33,8 +34,6 @@ class RecipeDetailViewController: UIViewController {
     var image: UIImage?
     var ingredient: Ingredient?
     var direction: Direction?
-    var ingredients: [String] = []
-    var directions: [String] = []
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -60,10 +59,16 @@ class RecipeDetailViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             recipeItemTextField.placeholder = "Enter Ingredient..."
+            ingredientsView.alpha = 1
+            directionsView.alpha = 0
         case 1:
             recipeItemTextField.placeholder = "Enter Direction..."
+            ingredientsView.alpha = 0
+            directionsView.alpha = 1
         default:
             recipeItemTextField.placeholder = ""
+            ingredientsView.alpha = 0
+            directionsView.alpha = 0
         }
     }
     
@@ -81,8 +86,6 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     @objc func hideKeyboard() {
@@ -93,8 +96,6 @@ class RecipeDetailViewController: UIViewController {
         guard let recipe = recipe,
               let ingredient = recipeItemTextField.text, !ingredient.isEmpty else { return }
         IngredientController.shared.createIngredientWith(name: ingredient, recipe: recipe)
-        ingredients.append(ingredient)
-        tableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -104,7 +105,7 @@ class RecipeDetailViewController: UIViewController {
             destination?.delegate = self
         }
         if segue.identifier == "ingredientsTableView" {
-            let destination = segue.destination as? IngredientListTableViewController
+            let destination = segue.destination as? IngredientsListViewController
             destination?.delegate = self
         }
     }
@@ -117,22 +118,8 @@ extension RecipeDetailViewController: PhotoSelectorDelegate {
     }
 }//End of Extension
 
-extension RecipeDetailViewController: IngredientTableViewDelegate {
+extension RecipeDetailViewController: IngredientsTableViewDelegate {
     func tableViewLoaded(recipe: Recipe) {
-        self.recipe?.ingredients = recipe.ingredients
+        self.recipe = recipe
     }
 }//End of Extension
-
-extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        ingredients.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeDetailCell", for: indexPath)
-        let ingredient = ingredients[indexPath.row]
-        cell.textLabel?.text = ingredient
-        
-        return cell
-    }
-}
