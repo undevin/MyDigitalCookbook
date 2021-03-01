@@ -13,8 +13,8 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var ingredientView: UIView!
-    @IBOutlet weak var directionsView: UIView!
+//    @IBOutlet weak var ingredientView: UIView!
+//    @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
     
     // MARK: - Lifecycle
@@ -57,14 +57,11 @@ class RecipeDetailViewController: UIViewController {
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            ingredientView.alpha = 1
-            directionsView.alpha = 0
+            recipeItemTextField.placeholder = "Enter Ingredient..."
         case 1:
-            ingredientView.alpha = 0
-            directionsView.alpha = 1
+            recipeItemTextField.placeholder = "Enter Direction..."
         default:
-            ingredientView.alpha = 0
-            directionsView.alpha = 0
+            recipeItemTextField.placeholder = ""
         }
     }
     

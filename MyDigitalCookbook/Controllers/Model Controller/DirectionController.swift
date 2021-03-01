@@ -12,6 +12,12 @@ class DirectionController {
     // MARK: - Properties
     static let shared = DirectionController()
     
+    private lazy var fetchRequest: NSFetchRequest<Direction> = {
+        let request = NSFetchRequest<Direction>(entityName: "Direction")
+        request.predicate = NSPredicate(value: true)
+        return request
+    }()
+    
     // MARK: - Methods
     func addDirectionTo(recipe: Recipe, direction: String) {
         let direction = Direction(directions: direction, recipe: recipe)
