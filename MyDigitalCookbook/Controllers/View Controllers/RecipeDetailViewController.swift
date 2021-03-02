@@ -16,7 +16,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var ingredientsView: UIView!
     @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    @IBOutlet weak var recipeSegmentControl: UISegmentedControl!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -34,6 +34,8 @@ class RecipeDetailViewController: UIViewController {
     var image: UIImage?
     var ingredient: Ingredient?
     var direction: Direction?
+    var ingredients: [Ingredient] = []
+    var directions: [Direction] = []
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -51,7 +53,11 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        addIngredientToTable()
+        if recipeSegmentControl.selectedSegmentIndex == 0 {
+            addIngredientToTable()
+        } else {
+            addDirectionsToTable()
+        }
         recipeItemTextField.text = ""
     }
     
@@ -96,6 +102,12 @@ class RecipeDetailViewController: UIViewController {
         guard let recipe = recipe,
               let ingredient = recipeItemTextField.text, !ingredient.isEmpty else { return }
         IngredientController.shared.createIngredientWith(name: ingredient, recipe: recipe)
+    }
+    
+    func addDirectionsToTable() {
+        guard let recipe = recipe,
+              let direction = recipeItemTextField.text, !direction.isEmpty else { return }
+        DirectionController.shared.addDirectionTo(recipe: recipe, direction: direction)
     }
     
     // MARK: - Navigation

@@ -396,6 +396,7 @@
                         <outlet property="photoImageView" destination="CeM-fx-6hJ" id="85k-ri-ix6"/>
                         <outlet property="recipeItemTextField" destination="BnZ-S1-Wdd" id="0Nh-2u-Hlz"/>
                         <outlet property="recipeNameTextField" destination="0OM-Ry-XJ4" id="H57-J2-ZC6"/>
+                        <outlet property="recipeSegmentControl" destination="JfC-Ve-eoS" id="ovG-RQ-5nJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zo-dq-Dfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

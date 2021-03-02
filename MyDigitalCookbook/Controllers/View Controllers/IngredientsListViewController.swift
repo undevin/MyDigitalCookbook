@@ -42,9 +42,9 @@ extension IngredientsListViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath)
-        let ingredients = ingredient?.name
-        cell.textLabel?.text = ingredients
-        print(ingredients)
+        let name = ingredient?.name
+        cell.textLabel?.text = name
+        
         return cell
     }
 }//End of Extension
