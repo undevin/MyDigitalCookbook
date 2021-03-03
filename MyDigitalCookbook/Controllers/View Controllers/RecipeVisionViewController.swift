@@ -8,7 +8,7 @@
 import VisionKit
 
 class RecipeVisionViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var scanImageView: UIImageView!
     

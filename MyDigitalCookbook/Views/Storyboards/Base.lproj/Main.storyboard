@@ -137,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Recipe Name)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-cZ-mQd">
-                                <rect key="frame" x="30" y="55" width="179.5" height="33.5"/>
+                                <rect key="frame" x="30" y="45" width="368" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -167,7 +167,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QX9-cZ-mQd" firstAttribute="leading" secondItem="Vcv-rc-fgP" secondAttribute="leading" constant="30" id="Mp3-bH-X4m"/>
-                            <constraint firstItem="QX9-cZ-mQd" firstAttribute="top" secondItem="Vcv-rc-fgP" secondAttribute="top" constant="55" id="RbE-Rr-AIV"/>
+                            <constraint firstItem="QX9-cZ-mQd" firstAttribute="top" secondItem="Vcv-rc-fgP" secondAttribute="top" constant="45" id="RbE-Rr-AIV"/>
+                            <constraint firstItem="Vcv-rc-fgP" firstAttribute="trailing" secondItem="QX9-cZ-mQd" secondAttribute="trailing" constant="16" id="aHj-cS-ugJ"/>
                             <constraint firstItem="ZLh-vN-i2u" firstAttribute="top" secondItem="Vcv-rc-fgP" secondAttribute="top" constant="84.5" id="kRI-C0-qYh"/>
                             <constraint firstItem="ZLh-vN-i2u" firstAttribute="leading" secondItem="Vcv-rc-fgP" secondAttribute="leading" constant="21.5" id="lLl-HQ-jqd"/>
                             <constraint firstItem="Vcv-rc-fgP" firstAttribute="bottom" secondItem="ZLh-vN-i2u" secondAttribute="bottom" constant="183.5" id="qqe-cB-YCv"/>

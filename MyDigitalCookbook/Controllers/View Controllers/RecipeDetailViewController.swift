@@ -25,8 +25,6 @@ class RecipeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        IngredientController.shared.fetchIngredients()
-        tableView.reloadData()
     }
     
     // MARK: - Properties
@@ -36,6 +34,7 @@ class RecipeDetailViewController: UIViewController {
             updateViews()
         }
     }
+    var defaultImage = UIImage(named: "food-default")
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -46,7 +45,6 @@ class RecipeDetailViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: UIButton) {
         addItemToTable()
         recipeItemTextField.text = ""
-        saveRecipeWithAdd()
     }
     
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
@@ -107,6 +105,7 @@ class RecipeDetailViewController: UIViewController {
             RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
         } else {
             RecipeController.shared.createRecipeWith(name: name, image: image)
+            addItemToTable()
         }
     }
     

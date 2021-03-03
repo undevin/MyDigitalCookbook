@@ -13,7 +13,7 @@ protocol PhotoSelectorDelegate: AnyObject {
 }
 
 class PhotoPickerViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var photoImageView: UIImageView!

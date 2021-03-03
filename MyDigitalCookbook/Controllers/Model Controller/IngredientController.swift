@@ -12,17 +12,19 @@ class IngredientController {
     // MARK: - Properties
     static let shared = IngredientController()
     var ingredients: [Ingredient] = []
+    var recipe: Recipe?
     
     private lazy var fetchRequest: NSFetchRequest<Ingredient> = {
         let request = NSFetchRequest<Ingredient>(entityName: "Ingredient")
         request.predicate = NSPredicate(value: true)
-//        request.predicate = NSPredicate(format: "name == %@", "TEST")
+//        request.predicate = NSPredicate(format: "name == %@", recipe?.ingredients as? CVarArg)
         return request
     }()
     
     // MARK: - Methods
     func addIngredientWith(name: String, recipe: Recipe) {
-        Ingredient(name: name, recipe: recipe)
+        let newIngredient = Ingredient(name: name, recipe: recipe)
+        ingredients.append(newIngredient)
         CoreDataStack.saveContext()
     }
     
