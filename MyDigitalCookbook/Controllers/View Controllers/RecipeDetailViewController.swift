@@ -13,8 +13,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var ingredientsView: UIView!
-    @IBOutlet weak var directionsView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var recipeSegmentControl: UISegmentedControl!
     
@@ -24,6 +23,12 @@ class RecipeDetailViewController: UIViewController {
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IngredientController.shared.fetchIngredients()
+        tableView.reloadData()
+    }
+    
     // MARK: - Properties
     var recipe: Recipe? {
         didSet {
@@ -31,11 +36,6 @@ class RecipeDetailViewController: UIViewController {
             updateViews()
         }
     }
-    var image: UIImage?
-    var ingredient: Ingredient?
-    var direction: Direction?
-    var ingredients: [Ingredient] = []
-    var directions: [Direction] = []
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -43,9 +43,6 @@ class RecipeDetailViewController: UIViewController {
               let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
         if let recipe = recipe {
             RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
-        } else if let recipe = recipe, photoImageView.image == nil {
-            let image = UIImage(named: "food-default")?.jpegData(compressionQuality: 0.5)
-            RecipeController.shared.createRecipeWith(name: name, image: image)
         } else {
             RecipeController.shared.createRecipeWith(name: name, image: image)
         }
@@ -53,28 +50,23 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        if recipeSegmentControl.selectedSegmentIndex == 0 {
-            addIngredientToTable()
-        } else {
-            addDirectionsToTable()
-        }
+        addItemToTable()
         recipeItemTextField.text = ""
     }
     
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
+            IngredientController.shared.fetchIngredients()
             recipeItemTextField.placeholder = "Enter Ingredient..."
-            ingredientsView.alpha = 1
-            directionsView.alpha = 0
+            tableView.reloadData()
         case 1:
+            DirectionController.shared.fetchDirections()
             recipeItemTextField.placeholder = "Enter Direction..."
-            ingredientsView.alpha = 0
-            directionsView.alpha = 1
+            tableView.reloadData()
         default:
             recipeItemTextField.placeholder = ""
-            ingredientsView.alpha = 0
-            directionsView.alpha = 0
+            tableView.reloadData()
         }
     }
     
@@ -92,32 +84,31 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @objc func hideKeyboard() {
         view.endEditing(true)
     }
     
-    func addIngredientToTable() {
-        guard let recipe = recipe,
-              let ingredient = recipeItemTextField.text, !ingredient.isEmpty else { return }
-        IngredientController.shared.createIngredientWith(name: ingredient, recipe: recipe)
-    }
-    
-    func addDirectionsToTable() {
-        guard let recipe = recipe,
-              let direction = recipeItemTextField.text, !direction.isEmpty else { return }
-        DirectionController.shared.addDirectionTo(recipe: recipe, direction: direction)
+    func addItemToTable() {
+        if recipeSegmentControl.selectedSegmentIndex == 0 {
+            guard let recipe = recipe,
+                  let name = recipeItemTextField.text, !name.isEmpty else { return }
+            IngredientController.shared.addIngredientWith(name: name, recipe: recipe)
+        } else {
+            guard let recipe = recipe,
+                  let direction = recipeItemTextField.text, !direction.isEmpty else { return }
+            DirectionController.shared.addDirectionTo(recipe: recipe, direction: direction)
+        }
+        tableView.reloadData()
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPhotoPicker" {
             let destination = segue.destination as? PhotoPickerViewController
-            destination?.delegate = self
-        }
-        if segue.identifier == "ingredientsTableView" {
-            let destination = segue.destination as? IngredientsListViewController
             destination?.delegate = self
         }
     }
@@ -130,8 +121,47 @@ extension RecipeDetailViewController: PhotoSelectorDelegate {
     }
 }//End of Extension
 
-extension RecipeDetailViewController: IngredientsTableViewDelegate {
-    func tableViewLoaded(recipe: Recipe) {
-        self.recipe = recipe
+extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if recipeSegmentControl.selectedSegmentIndex == 0 {
+            return IngredientController.shared.ingredients.count
+        } else {
+            return DirectionController.shared.directions.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
+        if recipeSegmentControl.selectedSegmentIndex == 0 {
+            let ingredient = IngredientController.shared.ingredients[indexPath.row]
+            cell.textLabel?.text = ingredient.name
+            return cell
+        } else {
+            let direction = DirectionController.shared.directions[indexPath.row]
+            cell.textLabel?.text = direction.directions
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch recipeSegmentControl.selectedSegmentIndex {
+        case 0:
+            if editingStyle == .delete {
+                let ingredient = IngredientController.shared.ingredients[indexPath.row]
+                IngredientController.shared.deleteIngredient(name: ingredient)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case 1:
+            if editingStyle == .delete {
+                let direction = DirectionController.shared.directions[indexPath.row]
+                DirectionController.shared.deleteDirection(name: direction)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        default:
+            let alert = UIAlertController(title: "Error", message: "Unable to delete. Please try again.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
     }
 }//End of Extension

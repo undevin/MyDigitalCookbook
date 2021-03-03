@@ -8,11 +8,11 @@
 import UIKit
 
 protocol IngredientsTableViewDelegate: AnyObject {
-    func tableViewLoaded(recipe: Recipe)
+    func ingredientTableViewLoaded(ingredients: [Ingredient])
 }
 
 class IngredientsListViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,25 +25,27 @@ class IngredientsListViewController: UIViewController {
     //MARK: - Properties
     weak var delegate: IngredientsTableViewDelegate?
     var recipe: Recipe?
-    var ingredient: Ingredient?
+    var ingredients: [Ingredient] = []
     
     //MARK: - Methods
     func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
+        guard let recipe = recipe else { return }
+        IngredientController.shared.fetchIngredients()
     }
 }//End of Class
 
 //MARK: - Extensions
 extension IngredientsListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe?.ingredients?.count ?? 0
+        return IngredientController.shared.ingredients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath)
-        let name = ingredient?.name
-        cell.textLabel?.text = name
+        let ingredient = IngredientController.shared.ingredients[indexPath.row]
+        cell.textLabel?.text = ingredient.name
         
         return cell
     }
