@@ -30,6 +30,7 @@ class IngredientController {
     
     func fetchIngredients() {
         self.ingredients = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+        self.ingredients.filter{ }
     }
     
     func updateIngredient(name: String, ingredient: Ingredient) {
