@@ -30,7 +30,7 @@ class PhotoPickerViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func selectPhotoButtonTapped(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Add a Photo", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add a Photo", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
             self.imagePicker.dismiss(animated: true, completion: nil)
         }

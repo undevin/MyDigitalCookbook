@@ -39,19 +39,14 @@ class RecipeDetailViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let name = recipeNameTextField.text, !name.isEmpty,
-              let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-        if let recipe = recipe {
-            RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
-        } else {
-            RecipeController.shared.createRecipeWith(name: name, image: image)
-        }
+        saveRecipeWithAdd()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         addItemToTable()
         recipeItemTextField.text = ""
+        saveRecipeWithAdd()
     }
     
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
@@ -105,6 +100,16 @@ class RecipeDetailViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func saveRecipeWithAdd() {
+        guard let name = recipeNameTextField.text, !name.isEmpty,
+              let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+        if let recipe = recipe {
+            RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
+        } else {
+            RecipeController.shared.createRecipeWith(name: name, image: image)
+        }
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPhotoPicker" {
@@ -135,10 +140,12 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
         if recipeSegmentControl.selectedSegmentIndex == 0 {
             let ingredient = IngredientController.shared.ingredients[indexPath.row]
             cell.textLabel?.text = ingredient.name
+            cell.textLabel?.numberOfLines = 0
             return cell
         } else {
             let direction = DirectionController.shared.directions[indexPath.row]
             cell.textLabel?.text = direction.directions
+            cell.textLabel?.numberOfLines = 0
             return cell
         }
     }

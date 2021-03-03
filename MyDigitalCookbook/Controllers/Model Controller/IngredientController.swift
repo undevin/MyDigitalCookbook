@@ -16,6 +16,7 @@ class IngredientController {
     private lazy var fetchRequest: NSFetchRequest<Ingredient> = {
         let request = NSFetchRequest<Ingredient>(entityName: "Ingredient")
         request.predicate = NSPredicate(value: true)
+//        request.predicate = NSPredicate(format: "name == %@", "TEST")
         return request
     }()
     
