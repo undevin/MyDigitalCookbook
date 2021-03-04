@@ -22,11 +22,7 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
+
     // MARK: - Properties
     var recipe: Recipe? {
         didSet {
@@ -34,11 +30,16 @@ class RecipeDetailViewController: UIViewController {
             updateViews()
         }
     }
-    var defaultImage = UIImage(named: "food-default")
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        saveRecipeWithAdd()
+        guard let name = recipeNameTextField.text, !name.isEmpty,
+              let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+        if let recipe = recipe {
+            RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
+        } else {
+            RecipeController.shared.createRecipeWith(name: name, image: image)
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -48,13 +49,14 @@ class RecipeDetailViewController: UIViewController {
     }
     
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
+        guard let recipe = recipe else { return }
         switch sender.selectedSegmentIndex {
         case 0:
-            IngredientController.shared.fetchIngredients()
+            IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
             recipeItemTextField.placeholder = "Enter Ingredient..."
             tableView.reloadData()
         case 1:
-            DirectionController.shared.fetchDirections()
+            DirectionController.shared.fetchDirections(predicate: NSPredicate(format: "recipe == %@", recipe))
             recipeItemTextField.placeholder = "Enter Direction..."
             tableView.reloadData()
         default:
@@ -79,6 +81,9 @@ class RecipeDetailViewController: UIViewController {
         view.addGestureRecognizer(tap)
         tableView.delegate = self
         tableView.dataSource = self
+        addButton.layer.cornerRadius = 10
+        guard let recipe = recipe else { return }
+        IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
     }
     
     @objc func hideKeyboard() {
@@ -96,17 +101,6 @@ class RecipeDetailViewController: UIViewController {
             DirectionController.shared.addDirectionTo(recipe: recipe, direction: direction)
         }
         tableView.reloadData()
-    }
-    
-    func saveRecipeWithAdd() {
-        guard let name = recipeNameTextField.text, !name.isEmpty,
-              let image = photoImageView.image?.jpegData(compressionQuality: 0.5) else { return }
-        if let recipe = recipe {
-            RecipeController.shared.updateRecipe(recipe: recipe, name: name, image: image)
-        } else {
-            RecipeController.shared.createRecipeWith(name: name, image: image)
-            addItemToTable()
-        }
     }
     
     // MARK: - Navigation

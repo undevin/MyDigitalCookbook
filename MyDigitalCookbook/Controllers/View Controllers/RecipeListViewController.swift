@@ -27,6 +27,12 @@ class RecipeListViewController: UIViewController {
     
     // MARK: - Properties
     var refresher: UIRefreshControl = UIRefreshControl()
+    let defaultImage: UIImage = UIImage(named: "food-default")!
+    
+    // MARK: - Actions
+    @IBAction func addButtonTapped(_ sender: Any) {
+        createNewRecipe()
+    }
     
     // MARK: - Methods
     func setupViews() {
@@ -42,6 +48,23 @@ class RecipeListViewController: UIViewController {
         RecipeController.shared.fetchRecipes()
         tableView.reloadData()
         self.refresher.endRefreshing()
+    }
+    
+    func createNewRecipe() {
+        let alertController = UIAlertController(title: "Add New Recipe", message: nil, preferredStyle: .alert)
+        alertController.addTextField { (textfield) in
+            textfield.placeholder = "Recipe Name"
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let create = UIAlertAction(title: "Create", style: .default) { [weak self] (_) in
+            guard let name = alertController.textFields?[0].text,
+                  let image = self?.defaultImage.jpegData(compressionQuality: 0.5) else { return }
+            RecipeController.shared.createRecipeWith(name: name, image: image)
+            self?.tableView.reloadData()
+        }
+        alertController.addAction(cancel)
+        alertController.addAction(create)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

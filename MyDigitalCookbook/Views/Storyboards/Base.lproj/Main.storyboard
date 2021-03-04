@@ -81,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="visionRecipeCell" textLabel="Qu1-zC-Hfu" style="IBUITableViewCellStyleDefault" id="gmE-hF-NFt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="visionRecipeCell" textLabel="Qu1-zC-Hfu" style="IBUITableViewCellStyleDefault" id="gmE-hF-NFt">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gmE-hF-NFt" id="Z0s-wY-OSK">
@@ -249,7 +249,7 @@
                     <navigationItem key="navigationItem" title="Recipes" id="rWR-O7-kUb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ryy-na-aEH">
                             <connections>
-                                <segue destination="lBR-mI-8IF" kind="show" id="rFv-Bz-e3q"/>
+                                <action selector="addButtonTapped:" destination="bjK-45-OUN" id="Mwe-Aq-GeO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -261,7 +261,7 @@
             </objects>
             <point key="canvasLocation" x="1276.8115942028987" y="575.89285714285711"/>
         </scene>
-        <!--New Recipe-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="dVV-LF-1qO">
             <objects>
                 <viewController id="lBR-mI-8IF" customClass="RecipeDetailViewController" customModule="MyDigitalCookbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -390,7 +390,7 @@
                             <constraint firstItem="0Xd-qe-5Z6" firstAttribute="trailing" secondItem="Njd-zT-hc0" secondAttribute="trailing" id="zU4-38-skf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Recipe" id="TUh-JC-McS">
+                    <navigationItem key="navigationItem" id="TUh-JC-McS">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1E-SR-GOJ">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="lBR-mI-8IF" id="IV7-rY-eil"/>
@@ -479,9 +479,6 @@
             <point key="canvasLocation" x="352" y="1450"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="AQL-L7-VKB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

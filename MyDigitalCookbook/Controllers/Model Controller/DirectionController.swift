@@ -15,7 +15,7 @@ class DirectionController {
     
     private lazy var fetchRequest: NSFetchRequest<Direction> = {
         let request = NSFetchRequest<Direction>(entityName: "Direction")
-        request.predicate = NSPredicate(value: true)
+        request.relationshipKeyPathsForPrefetching = ["recipe"]
         return request
     }()
     
@@ -26,7 +26,8 @@ class DirectionController {
         CoreDataStack.saveContext()
     }
     
-    func fetchDirections() {
+    func fetchDirections(predicate: NSPredicate = NSPredicate(value: true)) {
+        self.fetchRequest.predicate = predicate
         self.directions = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
     }
     

@@ -16,6 +16,8 @@ class RecipeController {
     
     private lazy var fetchRequest: NSFetchRequest<Recipe> = {
         let request = NSFetchRequest<Recipe>(entityName: "Recipe")
+        request.relationshipKeyPathsForPrefetching = ["ingredients"]
+        request.relationshipKeyPathsForPrefetching = ["directions"]
         request.predicate = NSPredicate(value: true)
         return request
     }()
@@ -24,7 +26,7 @@ class RecipeController {
     func createRecipeWith(name: String, image: Data?) {
         guard let image = image else { return }
         let newRecipe = Recipe(name: name, image: image)
-        recipes.append(newRecipe)
+        recipes.insert(newRecipe, at: 0)
         CoreDataStack.saveContext()
     }
     
@@ -45,13 +47,5 @@ class RecipeController {
         CoreDataStack.context.delete(recipe)
         CoreDataStack.saveContext()
         fetchRecipes()
-    }
-    
-    func addIngredientTo(recipe: Recipe, ingredient: Ingredient) {
-        CoreDataStack.saveContext()
-    }
-    
-    func addDirectionsTo(recipe: Recipe, direction: Direction) {
-        CoreDataStack.saveContext()
     }
 }//End of Class

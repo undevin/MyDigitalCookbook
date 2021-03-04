@@ -11,7 +11,6 @@ class VisionRecipeDetailViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var imageScrollView: UIScrollView!
-    
     @IBOutlet weak var visionRecipeNameLabel: UILabel!
     @IBOutlet weak var visionRecipeImageView: UIImageView!
     
@@ -27,7 +26,6 @@ class VisionRecipeDetailViewController: UIViewController {
             updateViews()
         }
     }
-    
     var tapGesture: UITapGestureRecognizer!
     
     // MARK: - Methods
@@ -45,7 +43,6 @@ class VisionRecipeDetailViewController: UIViewController {
         tapGesture = UITapGestureRecognizer(target: nil, action: nil)
         tapGesture.numberOfTapsRequired = 2
     }
-    
 }//End of Class
 
 // MARK: - Extensions
