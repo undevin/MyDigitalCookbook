@@ -17,20 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a recipe and save " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82e-Hp-wXl">
-                                <rect key="frame" x="20" y="108" width="282" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82e-Hp-wXl">
+                                <rect key="frame" x="20" y="108" width="162" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-ry-Rl3">
-                                <rect key="frame" x="20.5" y="173.5" width="373" height="320"/>
+                                <rect key="frame" x="20.5" y="174" width="373" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="PHH-dH-Dz4"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPb-dK-x4Z">
-                                <rect key="frame" x="147.5" y="525.5" width="119" height="36"/>
+                                <rect key="frame" x="147.5" y="526" width="119" height="36"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,6 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scanImageView" destination="hvb-ry-Rl3" id="nsh-v9-1QQ"/>
+                        <outlet property="scanRecipeButton" destination="GPb-dK-x4Z" id="zjP-MJ-2jI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaY-NO-i7s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -143,10 +144,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLh-vN-i2u">
-                                <rect key="frame" x="21.5" y="84.5" width="371" height="540"/>
+                                <rect key="frame" x="0.0" y="98.5" width="414" height="709.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-Xv-feu">
-                                        <rect key="frame" x="20" y="20" width="331" height="500"/>
+                                        <rect key="frame" x="24.5" y="105" width="365" height="500"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="LH9-Ts-eNl"/>
                                         </constraints>
@@ -169,9 +170,9 @@
                             <constraint firstItem="QX9-cZ-mQd" firstAttribute="leading" secondItem="Vcv-rc-fgP" secondAttribute="leading" constant="30" id="Mp3-bH-X4m"/>
                             <constraint firstItem="QX9-cZ-mQd" firstAttribute="top" secondItem="Vcv-rc-fgP" secondAttribute="top" constant="45" id="RbE-Rr-AIV"/>
                             <constraint firstItem="Vcv-rc-fgP" firstAttribute="trailing" secondItem="QX9-cZ-mQd" secondAttribute="trailing" constant="16" id="aHj-cS-ugJ"/>
-                            <constraint firstItem="ZLh-vN-i2u" firstAttribute="top" secondItem="Vcv-rc-fgP" secondAttribute="top" constant="84.5" id="kRI-C0-qYh"/>
-                            <constraint firstItem="ZLh-vN-i2u" firstAttribute="leading" secondItem="Vcv-rc-fgP" secondAttribute="leading" constant="21.5" id="lLl-HQ-jqd"/>
-                            <constraint firstItem="Vcv-rc-fgP" firstAttribute="bottom" secondItem="ZLh-vN-i2u" secondAttribute="bottom" constant="183.5" id="qqe-cB-YCv"/>
+                            <constraint firstItem="ZLh-vN-i2u" firstAttribute="top" secondItem="QX9-cZ-mQd" secondAttribute="bottom" constant="20" id="kRI-C0-qYh"/>
+                            <constraint firstItem="ZLh-vN-i2u" firstAttribute="leading" secondItem="Vcv-rc-fgP" secondAttribute="leading" id="lLl-HQ-jqd"/>
+                            <constraint firstItem="Vcv-rc-fgP" firstAttribute="bottom" secondItem="ZLh-vN-i2u" secondAttribute="bottom" id="qqe-cB-YCv"/>
                             <constraint firstItem="ZLh-vN-i2u" firstAttribute="centerX" secondItem="wny-Xd-2yp" secondAttribute="centerX" id="ugh-gQ-do5"/>
                         </constraints>
                     </view>
@@ -261,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="1276.8115942028987" y="575.89285714285711"/>
         </scene>
-        <!--Recipe Detail View Controller-->
+        <!--New Recipe-->
         <scene sceneID="dVV-LF-1qO">
             <objects>
                 <viewController id="lBR-mI-8IF" customClass="RecipeDetailViewController" customModule="MyDigitalCookbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -390,7 +391,7 @@
                             <constraint firstItem="0Xd-qe-5Z6" firstAttribute="trailing" secondItem="Njd-zT-hc0" secondAttribute="trailing" id="zU4-38-skf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TUh-JC-McS">
+                    <navigationItem key="navigationItem" title="New Recipe" id="TUh-JC-McS">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1E-SR-GOJ">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="lBR-mI-8IF" id="IV7-rY-eil"/>

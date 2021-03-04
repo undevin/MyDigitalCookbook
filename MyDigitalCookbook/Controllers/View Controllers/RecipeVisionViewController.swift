@@ -11,11 +11,12 @@ class RecipeVisionViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var scanImageView: UIImageView!
-    
+    @IBOutlet weak var scanRecipeButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
     }
     
     // MARK: - Properties
@@ -33,6 +34,10 @@ class RecipeVisionViewController: UIViewController {
     }
     
     // MARK: - Methods
+    func setupViews() {
+        scanRecipeButton.layer.cornerRadius = 10
+    }
+    
     func displaySaveAlertController() {
         let alertController = UIAlertController(title: "Save Scanned Recipe", message: nil, preferredStyle: .alert)
         alertController.addTextField { (textfield) in
