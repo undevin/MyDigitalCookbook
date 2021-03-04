@@ -262,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="1276.8115942028987" y="575.89285714285711"/>
         </scene>
-        <!--New Recipe-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="dVV-LF-1qO">
             <objects>
                 <viewController id="lBR-mI-8IF" customClass="RecipeDetailViewController" customModule="MyDigitalCookbook" customModuleProvider="target" sceneMemberID="viewController">
@@ -391,7 +391,7 @@
                             <constraint firstItem="0Xd-qe-5Z6" firstAttribute="trailing" secondItem="Njd-zT-hc0" secondAttribute="trailing" id="zU4-38-skf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Recipe" id="TUh-JC-McS">
+                    <navigationItem key="navigationItem" id="TUh-JC-McS">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1E-SR-GOJ">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="lBR-mI-8IF" id="IV7-rY-eil"/>
@@ -404,6 +404,7 @@
                         <outlet property="recipeItemTextField" destination="BnZ-S1-Wdd" id="0Nh-2u-Hlz"/>
                         <outlet property="recipeNameTextField" destination="0OM-Ry-XJ4" id="H57-J2-ZC6"/>
                         <outlet property="recipeSegmentControl" destination="JfC-Ve-eoS" id="ovG-RQ-5nJ"/>
+                        <outlet property="saveButton" destination="t1E-SR-GOJ" id="8JW-XL-RyC"/>
                         <outlet property="tableView" destination="LfM-pS-SD3" id="diZ-Zi-Il5"/>
                     </connections>
                 </viewController>

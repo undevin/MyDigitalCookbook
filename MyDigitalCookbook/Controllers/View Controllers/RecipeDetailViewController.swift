@@ -13,6 +13,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var recipeSegmentControl: UISegmentedControl!
@@ -22,7 +23,7 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
     }
-
+    
     // MARK: - Properties
     var recipe: Recipe? {
         didSet {
@@ -81,6 +82,7 @@ class RecipeDetailViewController: UIViewController {
         view.addGestureRecognizer(tap)
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.isEditing = true
         addButton.layer.cornerRadius = 10
         guard let recipe = recipe else { return }
         IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
@@ -163,5 +165,25 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if recipeSegmentControl.selectedSegmentIndex == 0 {
+            let moved = IngredientController.shared.ingredients[sourceIndexPath.row]
+            IngredientController.shared.ingredients.remove(at: sourceIndexPath.row)
+            IngredientController.shared.ingredients.insert(moved, at: destinationIndexPath.row)
+        } else {
+            let moved = DirectionController.shared.directions[sourceIndexPath.row]
+            DirectionController.shared.directions.remove(at: sourceIndexPath.row)
+            DirectionController.shared.directions.insert(moved, at: destinationIndexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }//End of Extension
