@@ -90,6 +90,7 @@ class RecipeDetailViewController: UIViewController {
         self.tableView.isEditing = false
         addButton.layer.cornerRadius = 10
         recipeNameTextField.autocapitalizationType = .words
+        recipeItemTextField.autocapitalizationType = .sentences
         guard let recipe = recipe else { return }
         IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
     }
