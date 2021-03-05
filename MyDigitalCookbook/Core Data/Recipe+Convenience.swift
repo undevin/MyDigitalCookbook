@@ -7,11 +7,6 @@
 
 import CoreData
 
-//MARK: - Protocols
-protocol SearchableRecordDelegate {
-    func matches(searchTerm: String) -> Bool
-}//End of protocol
-
 extension Recipe {
     @discardableResult convenience init(name: String, uuid: String = UUID().uuidString, image: Data?, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)

@@ -11,6 +11,7 @@ class RecipeListViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -22,12 +23,15 @@ class RecipeListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         RecipeController.shared.fetchRecipes()
+        resultsArray = RecipeController.shared.recipes
         tableView.reloadData()
     }
     
     // MARK: - Properties
     var refresher: UIRefreshControl = UIRefreshControl()
     let defaultImage: UIImage = UIImage(named: "food-default")!
+    var isSearching = false
+    var resultsArray: [SearchableRecordDelegate] = []
     
     // MARK: - Actions
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -42,6 +46,8 @@ class RecipeListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        
     }
     
     @objc func loadData() {
@@ -54,12 +60,14 @@ class RecipeListViewController: UIViewController {
         let alertController = UIAlertController(title: "Add New Recipe", message: nil, preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.placeholder = "Recipe Name"
+            textfield.autocapitalizationType = .words
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let create = UIAlertAction(title: "Create", style: .default) { [weak self] (_) in
             guard let name = alertController.textFields?[0].text,
                   let image = self?.defaultImage.jpegData(compressionQuality: 0.5) else { return }
             RecipeController.shared.createRecipeWith(name: name, image: image)
+            self?.resultsArray = RecipeController.shared.recipes
             self?.tableView.reloadData()
         }
         alertController.addAction(cancel)
@@ -81,22 +89,57 @@ class RecipeListViewController: UIViewController {
 // MARK: - Extensions
 extension RecipeListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        RecipeController.shared.recipes.count
+        resultsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeTableViewCell else {return UITableViewCell()}
-        let recipe = RecipeController.shared.recipes[indexPath.row]
-        cell.recipe = recipe
+        let recipe = resultsArray[indexPath.row]
+        cell.recipe = recipe as? Recipe
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recipeToDelete = RecipeController.shared.recipes[indexPath.row]
-            RecipeController.shared.deleteRecipe(recipe: recipeToDelete)
+            let recipeToDelete = resultsArray[indexPath.row]
+            guard let recipe = recipeToDelete as? Recipe else { return }
+            RecipeController.shared.deleteRecipe(recipe: recipe)
+            resultsArray = RecipeController.shared.recipes
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+}//End of Extension
+
+extension RecipeListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchText.isEmpty {
+            resultsArray = RecipeController.shared.recipes.filter{ $0.matches(searchTerm: searchText)}
+            self.tableView.reloadData()
+        } else {
+            resultsArray = RecipeController.shared.recipes
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearching = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        isSearching = false
+        resultsArray = RecipeController.shared.recipes
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
     }
 }//End of Extension

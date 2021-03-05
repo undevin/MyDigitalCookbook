@@ -13,6 +13,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -49,6 +50,10 @@ class RecipeDetailViewController: UIViewController {
         recipeItemTextField.text = ""
     }
     
+    @IBAction func editButtonTapped(_ sender: Any) {
+        self.tableView.isEditing.toggle()
+    }
+    
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
         guard let recipe = recipe else { return }
         switch sender.selectedSegmentIndex {
@@ -82,8 +87,9 @@ class RecipeDetailViewController: UIViewController {
         view.addGestureRecognizer(tap)
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.isEditing = true
+        self.tableView.isEditing = false
         addButton.layer.cornerRadius = 10
+        recipeNameTextField.autocapitalizationType = .words
         guard let recipe = recipe else { return }
         IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
     }
@@ -177,10 +183,6 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
             DirectionController.shared.directions.remove(at: sourceIndexPath.row)
             DirectionController.shared.directions.insert(moved, at: destinationIndexPath.row)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
     }
     
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {

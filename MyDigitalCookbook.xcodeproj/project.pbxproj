@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031B641825F1AE5700AF3612 /* RecipeSearchableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B641725F1AE5600AF3612 /* RecipeSearchableExtension.swift */; };
+		031B641B25F1BC7900AF3612 /* VisionRecipeSearchableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B641A25F1BC7900AF3612 /* VisionRecipeSearchableExtension.swift */; };
 		031D358825E460DB00F05384 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D358725E460DB00F05384 /* CoreDataStack.swift */; };
 		031D35FE25E6EDC700F05384 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D35FD25E6EDC700F05384 /* PhotoPickerViewController.swift */; };
 		031D360525E72D6100F05384 /* PhotoPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031D360325E72D6100F05384 /* PhotoPicker.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031B641725F1AE5600AF3612 /* RecipeSearchableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchableExtension.swift; sourceTree = "<group>"; };
+		031B641A25F1BC7900AF3612 /* VisionRecipeSearchableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionRecipeSearchableExtension.swift; sourceTree = "<group>"; };
 		031D358725E460DB00F05384 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		031D35FD25E6EDC700F05384 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		031D360425E72D6100F05384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MyDigitalCookbook/Views/Storyboards/Base.lproj/PhotoPicker.storyboard; sourceTree = "<group>"; };
@@ -75,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031B641E25F1C45900AF3612 /* Helpers and Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				031B641725F1AE5600AF3612 /* RecipeSearchableExtension.swift */,
+				031B641A25F1BC7900AF3612 /* VisionRecipeSearchableExtension.swift */,
+			);
+			path = "Helpers and Extensions";
+			sourceTree = "<group>";
+		};
 		031D359225E484B200F05384 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		038E69FC25E42F7B00076C73 /* MyDigitalCookbook */ = {
 			isa = PBXGroup;
 			children = (
+				031B641E25F1C45900AF3612 /* Helpers and Extensions */,
 				038E6A2125E431DC00076C73 /* Core Data */,
 				038E6A2525E4371200076C73 /* Controllers */,
 				038E6A1A25E42FC900076C73 /* MyDigitalCookbook.entitlements */,
@@ -154,11 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				031D358725E460DB00F05384 /* CoreDataStack.swift */,
+				03A6220A25E9BC9B006E8F11 /* Directions+Convenience.swift */,
+				03A6220725E9BAD8006E8F11 /* Ingredients+Convenience.swift */,
 				038E6A0625E42F7B00076C73 /* MyDigitalCookbook.xcdatamodeld */,
 				038E6A2225E4346500076C73 /* Recipe+Convenience.swift */,
 				031D361125E8576F00F05384 /* Vision+Convenience.swift */,
-				03A6220725E9BAD8006E8F11 /* Ingredients+Convenience.swift */,
-				03A6220A25E9BC9B006E8F11 /* Directions+Convenience.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -268,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				038E6A0825E42F7B00076C73 /* MyDigitalCookbook.xcdatamodeld in Sources */,
+				031B641825F1AE5700AF3612 /* RecipeSearchableExtension.swift in Sources */,
 				038E69FE25E42F7B00076C73 /* AppDelegate.swift in Sources */,
 				031D361225E8576F00F05384 /* Vision+Convenience.swift in Sources */,
 				034D4F5725EACF710030C4E5 /* DirectionController.swift in Sources */,
@@ -283,6 +298,7 @@
 				03A6221A25EAC627006E8F11 /* IngredientController.swift in Sources */,
 				03A6221425E9D0C0006E8F11 /* VisionRecipeDetailViewController.swift in Sources */,
 				03A6220825E9BAD8006E8F11 /* Ingredients+Convenience.swift in Sources */,
+				031B641B25F1BC7900AF3612 /* VisionRecipeSearchableExtension.swift in Sources */,
 				03F15AA625E95A6100174CD4 /* RecipeListViewController.swift in Sources */,
 				03A6220525E994E7006E8F11 /* RecipeDetailViewController.swift in Sources */,
 				038E6A2325E4346500076C73 /* Recipe+Convenience.swift in Sources */,

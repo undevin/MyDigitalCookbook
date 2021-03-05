@@ -42,6 +42,7 @@ class RecipeVisionViewController: UIViewController {
         let alertController = UIAlertController(title: "Save Scanned Recipe", message: nil, preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.placeholder = "Recipe Name"
+            textfield.autocapitalizationType = .words
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let confirm = UIAlertAction(title: "OK", style: .default) { [weak self] (_) in
