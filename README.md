@@ -1,5 +1,17 @@
 # MyDigitalCookbook
 
+Tired of looking through all of your recipe books to find that one recipe so you can start dinner? Then the app is for you!
+
+
+
+
+With an easy design, start adding your favorite recipes and keep your cookbook growing. Easy to use search functionality so you'll always be able to find the recipe your craving. 
+
+Need to add a quick recipe? Use your camera to scan the recipe page and save it to the app! 
+
+Never go without your cookbook again. MyDigitCookbook use your iCloud account to backup and restore your cookbook wherever you are, whatever device you are on. It works on your iPhone, iPad, or iPod Touch.
+
+
 <img src="https://user-images.githubusercontent.com/30535541/110221118-f7568e00-7e8f-11eb-9018-02d0a2112a07.png" width="250" height="250">
 
 
