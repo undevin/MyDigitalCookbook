@@ -4,7 +4,7 @@ Tired of looking through all of your recipe books to find that one recipe so you
 </br></br>
 <img src="https://user-images.githubusercontent.com/30535541/110221118-f7568e00-7e8f-11eb-9018-02d0a2112a07.png" width="250" height="450">
 &nbsp;
-<img src="https://user-images.githubusercontent.com/30535541/110221127-fcb3d880-7e8f-11eb-91de-4e8a24c6544e.png" width="600" height="450">
+<img src="https://user-images.githubusercontent.com/30535541/110221127-fcb3d880-7e8f-11eb-91de-4e8a24c6544e.png" width="500" height="350">
 
 With an easy design, start adding your favorite recipes and keep your cookbook growing. Easy to use search functionality so you'll always be able to find the recipe your craving. 
 </br></br>
