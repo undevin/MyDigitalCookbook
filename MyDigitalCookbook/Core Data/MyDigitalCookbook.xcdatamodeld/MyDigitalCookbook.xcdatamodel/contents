@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Direction" representedClassName="Direction" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="636912660" usesScalarValueType="NO"/>
         <attribute name="directions" optional="YES" attributeType="String"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="directions" inverseEntity="Recipe"/>
     </entity>
     <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="636912660" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe"/>
     </entity>
@@ -20,8 +22,8 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Direction" positionX="185.46875" positionY="-53.51953125" width="128" height="73"/>
-        <element name="Ingredient" positionX="185.26171875" positionY="93.984375" width="128" height="73"/>
+        <element name="Direction" positionX="185.46875" positionY="-53.51953125" width="128" height="88"/>
+        <element name="Ingredient" positionX="185.26171875" positionY="93.984375" width="128" height="88"/>
         <element name="Recipe" positionX="-45" positionY="0" width="128" height="118"/>
         <element name="Vision" positionX="503.41015625" positionY="-88.8828125" width="149.98046875" height="73"/>
     </elements>

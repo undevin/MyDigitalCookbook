@@ -8,9 +8,10 @@
 import CoreData
 
 extension Ingredient {
-    @discardableResult convenience init(name: String, recipe: Recipe, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, date: Date = Date(), recipe: Recipe, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
+        self.date = date
         self.recipe = recipe
     }
     
