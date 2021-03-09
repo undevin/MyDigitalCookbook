@@ -59,10 +59,12 @@ class RecipeDetailViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
+            IngredientController.shared.ingredients.sort(by: { $0.date! < $1.date!})
             recipeItemTextField.placeholder = "Enter Ingredient..."
             tableView.reloadData()
         case 1:
             DirectionController.shared.fetchDirections(predicate: NSPredicate(format: "recipe == %@", recipe))
+            DirectionController.shared.directions.sort(by: { $0.date! < $1.date!})
             recipeItemTextField.placeholder = "Enter Direction..."
             tableView.reloadData()
         default:
@@ -85,9 +87,9 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
+        self.tableView.isEditing = false
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.isEditing = false
         addButton.layer.cornerRadius = 10
         recipeNameTextField.autocapitalizationType = .words
         recipeItemTextField.autocapitalizationType = .sentences
