@@ -87,9 +87,9 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
+        self.tableView.isEditing = false
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.isEditing = false
         addButton.layer.cornerRadius = 10
         recipeNameTextField.autocapitalizationType = .words
         recipeItemTextField.autocapitalizationType = .sentences
