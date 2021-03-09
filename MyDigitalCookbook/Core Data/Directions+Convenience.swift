@@ -8,9 +8,10 @@
 import CoreData
 
 extension Direction {
-    @discardableResult convenience init(directions: String, recipe: Recipe, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(directions: String, date: Date = Date(), recipe: Recipe, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.directions = directions
+        self.date = date
         self.recipe = recipe
     }
     
