@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>This app would like access to your camera.</string>
+	<string>MyDigitalCookbook would like access to your camera to take photos of your best food creations or scan in your favorite recipes.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app would like access to your photo library.</string>
+	<string>MyDigital Cookbook would like access to your photo library to add an image to your recipe.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
