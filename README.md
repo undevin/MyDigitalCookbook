@@ -17,6 +17,4 @@ Need to add a quick recipe? Use your camera to scan the recipe page and save it 
 <img src="https://user-images.githubusercontent.com/30535541/110221125-fc1b4200-7e8f-11eb-8383-496f6ef42b5d.png" width="275" height="600">
 
 Never go without your cookbook again. MyDigitCookbook use your iCloud account to backup and restore your cookbook wherever you are, whatever device you are on. It works on your iPhone, iPad, or iPod Touch.
-<img src="https://user-images.githubusercontent.com/30535541/110221128-fd4c6f00-7e8f-11eb-86b7-0fd47ea22c73.png" width="600" height="450">
-
-<h3>Download Today!</h3>
+<img src="https://user-images.githubusercontent.com/30535541/111052726-1bcbe080-8423-11eb-8013-81008deacab5.png" width="600" height="450">
