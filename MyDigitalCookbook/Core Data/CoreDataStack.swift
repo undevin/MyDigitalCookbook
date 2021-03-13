@@ -17,6 +17,7 @@ enum CoreDataStack {
                 fatalError("Error loading persistent store; \(error)")
             }
         }
+        container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()
     
