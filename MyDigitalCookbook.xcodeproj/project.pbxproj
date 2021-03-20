@@ -14,6 +14,7 @@
 		031D360525E72D6100F05384 /* PhotoPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031D360325E72D6100F05384 /* PhotoPicker.storyboard */; };
 		031D360F25E856AB00F05384 /* RecipeVisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D360E25E856AB00F05384 /* RecipeVisionViewController.swift */; };
 		031D361225E8576F00F05384 /* Vision+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D361125E8576F00F05384 /* Vision+Convenience.swift */; };
+		0325E52F260570DC005AA792 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325E52E260570DC005AA792 /* ShoppingListViewController.swift */; };
 		034D4F5725EACF710030C4E5 /* DirectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D4F5625EACF710030C4E5 /* DirectionController.swift */; };
 		038E69FE25E42F7B00076C73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E69FD25E42F7B00076C73 /* AppDelegate.swift */; };
 		038E6A0025E42F7B00076C73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E69FF25E42F7B00076C73 /* SceneDelegate.swift */; };
@@ -29,6 +30,9 @@
 		03A6220B25E9BC9B006E8F11 /* Directions+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6220A25E9BC9B006E8F11 /* Directions+Convenience.swift */; };
 		03A6221425E9D0C0006E8F11 /* VisionRecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6221325E9D0C0006E8F11 /* VisionRecipeDetailViewController.swift */; };
 		03A6221A25EAC627006E8F11 /* IngredientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6221925EAC627006E8F11 /* IngredientController.swift */; };
+		03C474812603F543005A5DA0 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C474802603F543005A5DA0 /* ShoppingListTableViewCell.swift */; };
+		03C474842603F6FA005A5DA0 /* Shopping+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C474832603F6FA005A5DA0 /* Shopping+Convenience.swift */; };
+		03C4749926056603005A5DA0 /* ShoppingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C4749826056603005A5DA0 /* ShoppingListController.swift */; };
 		03CE5CA725EF1E190007C03B /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE5CA625EF1E190007C03B /* RecipeTableViewCell.swift */; };
 		03F15AA225E9544400174CD4 /* VisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F15AA125E9544400174CD4 /* VisionController.swift */; };
 		03F15AA625E95A6100174CD4 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F15AA525E95A6100174CD4 /* RecipeListViewController.swift */; };
@@ -43,6 +47,7 @@
 		031D360425E72D6100F05384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MyDigitalCookbook/Views/Storyboards/Base.lproj/PhotoPicker.storyboard; sourceTree = "<group>"; };
 		031D360E25E856AB00F05384 /* RecipeVisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVisionViewController.swift; sourceTree = "<group>"; };
 		031D361125E8576F00F05384 /* Vision+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vision+Convenience.swift"; sourceTree = "<group>"; };
+		0325E52E260570DC005AA792 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		034D4F5625EACF710030C4E5 /* DirectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionController.swift; sourceTree = "<group>"; };
 		038E69FA25E42F7B00076C73 /* MyDigitalCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDigitalCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038E69FD25E42F7B00076C73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +66,9 @@
 		03A6220A25E9BC9B006E8F11 /* Directions+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Directions+Convenience.swift"; sourceTree = "<group>"; };
 		03A6221325E9D0C0006E8F11 /* VisionRecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionRecipeDetailViewController.swift; sourceTree = "<group>"; };
 		03A6221925EAC627006E8F11 /* IngredientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientController.swift; sourceTree = "<group>"; };
+		03C474802603F543005A5DA0 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		03C474832603F6FA005A5DA0 /* Shopping+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shopping+Convenience.swift"; sourceTree = "<group>"; };
+		03C4749826056603005A5DA0 /* ShoppingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListController.swift; sourceTree = "<group>"; };
 		03CE5CA625EF1E190007C03B /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		03F15AA125E9544400174CD4 /* VisionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionController.swift; sourceTree = "<group>"; };
 		03F15AA525E95A6100174CD4 /* RecipeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				03CE5CA625EF1E190007C03B /* RecipeTableViewCell.swift */,
+				03C474802603F543005A5DA0 /* ShoppingListTableViewCell.swift */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -173,6 +182,7 @@
 				038E6A0625E42F7B00076C73 /* MyDigitalCookbook.xcdatamodeld */,
 				038E6A2225E4346500076C73 /* Recipe+Convenience.swift */,
 				031D361125E8576F00F05384 /* Vision+Convenience.swift */,
+				03C474832603F6FA005A5DA0 /* Shopping+Convenience.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -193,6 +203,7 @@
 				03F15AA125E9544400174CD4 /* VisionController.swift */,
 				03A6221925EAC627006E8F11 /* IngredientController.swift */,
 				034D4F5625EACF710030C4E5 /* DirectionController.swift */,
+				03C4749826056603005A5DA0 /* ShoppingListController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 				03A6221325E9D0C0006E8F11 /* VisionRecipeDetailViewController.swift */,
 				03F15AA825E9617500174CD4 /* VisionRecipeListViewController.swift */,
 				031D360E25E856AB00F05384 /* RecipeVisionViewController.swift */,
+				0325E52E260570DC005AA792 /* ShoppingListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -282,12 +294,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				038E6A0825E42F7B00076C73 /* MyDigitalCookbook.xcdatamodeld in Sources */,
+				03C474812603F543005A5DA0 /* ShoppingListTableViewCell.swift in Sources */,
+				0325E52F260570DC005AA792 /* ShoppingListViewController.swift in Sources */,
 				031B641825F1AE5700AF3612 /* RecipeSearchableExtension.swift in Sources */,
 				038E69FE25E42F7B00076C73 /* AppDelegate.swift in Sources */,
 				031D361225E8576F00F05384 /* Vision+Convenience.swift in Sources */,
 				034D4F5725EACF710030C4E5 /* DirectionController.swift in Sources */,
 				038E6A0025E42F7B00076C73 /* SceneDelegate.swift in Sources */,
+				03C4749926056603005A5DA0 /* ShoppingListController.swift in Sources */,
 				03A6220B25E9BC9B006E8F11 /* Directions+Convenience.swift in Sources */,
+				03C474842603F6FA005A5DA0 /* Shopping+Convenience.swift in Sources */,
 				03F15AA225E9544400174CD4 /* VisionController.swift in Sources */,
 				03F15AA925E9617500174CD4 /* VisionRecipeListViewController.swift in Sources */,
 				031D358825E460DB00F05384 /* CoreDataStack.swift in Sources */,

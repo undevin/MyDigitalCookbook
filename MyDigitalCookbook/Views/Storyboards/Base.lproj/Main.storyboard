@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f71-nh-244" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="1941"/>
+            <point key="canvasLocation" x="3160.8695652173915" y="1940.625"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="KWE-eQ-MlR">
@@ -404,22 +404,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TUh-JC-McS">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="save" id="t1E-SR-GOJ">
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="lBR-mI-8IF" id="IV7-rY-eil"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="oIO-KB-hbY">
-                                <connections>
-                                    <action selector="editButtonTapped:" destination="lBR-mI-8IF" id="x9o-aZ-xsM"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1E-SR-GOJ">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="lBR-mI-8IF" id="IV7-rY-eil"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="HLN-l3-qtQ" id="jTJ-sW-FoO"/>
-                        <outlet property="editButton" destination="oIO-KB-hbY" id="PUZ-5d-Ios"/>
                         <outlet property="photoImageView" destination="CeM-fx-6hJ" id="85k-ri-ix6"/>
                         <outlet property="recipeItemTextField" destination="BnZ-S1-Wdd" id="0Nh-2u-Hlz"/>
                         <outlet property="recipeNameTextField" destination="0OM-Ry-XJ4" id="H57-J2-ZC6"/>
@@ -452,6 +444,7 @@
                     <connections>
                         <segue destination="8cm-5i-DSZ" kind="relationship" relationship="viewControllers" id="5x1-en-9Zv"/>
                         <segue destination="IBZ-om-rNg" kind="relationship" relationship="viewControllers" id="4Ka-G9-JkI"/>
+                        <segue destination="Dbt-Gb-MpD" kind="relationship" relationship="viewControllers" id="JoN-vY-Pus"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhc-rF-bpB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -500,9 +493,113 @@
             </objects>
             <point key="canvasLocation" x="352" y="1450"/>
         </scene>
+        <!--Shopping List-->
+        <scene sceneID="7Lt-33-TNy">
+            <objects>
+                <viewController id="7hM-NE-ESE" customClass="ShoppingListViewController" customModule="MyDigitalCookbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u6k-lc-KGN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p91-50-GLT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shoppingListCell" id="BrR-zK-vJ3" customClass="ShoppingListTableViewCell" customModule="MyDigitalCookbook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="82.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BrR-zK-vJ3" id="HcR-Bc-850">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="82.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-Th-TR0">
+                                                    <rect key="frame" x="32" y="16" width="50" height="50.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="3Zv-Th-TR0" secondAttribute="height" multiplier="1:1" id="CFo-Ko-fpe"/>
+                                                        <constraint firstAttribute="width" constant="50" id="oRX-7P-Kn5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <state key="normal" image="circle" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="itemButtonTapped:" destination="BrR-zK-vJ3" eventType="touchUpInside" id="vUb-XA-yuG"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g4-vw-EU2">
+                                                    <rect key="frame" x="98" y="25.5" width="288" height="31.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4g4-vw-EU2" firstAttribute="centerY" secondItem="HcR-Bc-850" secondAttribute="centerY" id="C4Y-Om-iW1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4g4-vw-EU2" secondAttribute="trailing" constant="8" id="F3E-2p-Nx2"/>
+                                                <constraint firstItem="3Zv-Th-TR0" firstAttribute="leading" secondItem="HcR-Bc-850" secondAttribute="leading" constant="32" id="GcJ-pE-I5f"/>
+                                                <constraint firstItem="4g4-vw-EU2" firstAttribute="leading" secondItem="3Zv-Th-TR0" secondAttribute="trailing" constant="16" id="HS3-AQ-dSs"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Zv-Th-TR0" secondAttribute="bottom" constant="16" id="Sgo-xB-ysr"/>
+                                                <constraint firstItem="3Zv-Th-TR0" firstAttribute="top" secondItem="HcR-Bc-850" secondAttribute="top" constant="16" id="c6D-5Q-7DK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemButton" destination="3Zv-Th-TR0" id="EW1-x2-M7a"/>
+                                            <outlet property="itemNameLabel" destination="4g4-vw-EU2" id="6Uh-w8-V5j"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kap-nw-LOf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p91-50-GLT" firstAttribute="top" secondItem="Kap-nw-LOf" secondAttribute="top" id="GRK-jH-Bwi"/>
+                            <constraint firstItem="Kap-nw-LOf" firstAttribute="bottom" secondItem="p91-50-GLT" secondAttribute="bottom" id="HED-7C-QyD"/>
+                            <constraint firstItem="Kap-nw-LOf" firstAttribute="trailing" secondItem="p91-50-GLT" secondAttribute="trailing" id="HLG-LU-jjs"/>
+                            <constraint firstItem="p91-50-GLT" firstAttribute="leading" secondItem="Kap-nw-LOf" secondAttribute="leading" id="x3Y-15-41v"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shopping List" id="uYc-cJ-LFt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cmp-5o-aA8">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="7hM-NE-ESE" id="yFR-F0-wUX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="p91-50-GLT" id="qDa-XI-ulH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="apB-Dv-XrY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260.8695652173915" y="2243.9732142857142"/>
+        </scene>
+        <!--Shopping List-->
+        <scene sceneID="kOL-vh-leA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dbt-Gb-MpD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" id="PCw-FF-5DJ">
+                        <imageReference key="image" image="bag" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Bd-FY-pAn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7hM-NE-ESE" kind="relationship" relationship="rootViewController" id="k53-8g-GmG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FvE-kA-yBY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="350.72463768115944" y="2243.9732142857142"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
