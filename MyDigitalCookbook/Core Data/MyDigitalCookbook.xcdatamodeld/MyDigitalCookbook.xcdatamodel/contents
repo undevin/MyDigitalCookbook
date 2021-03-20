@@ -17,6 +17,10 @@
         <relationship name="directions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Direction" inverseName="recipe" inverseEntity="Direction"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
     </entity>
+    <entity name="Shopping" representedClassName="Shopping" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Vision" representedClassName="Vision" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -26,5 +30,6 @@
         <element name="Ingredient" positionX="185.26171875" positionY="93.984375" width="128" height="88"/>
         <element name="Recipe" positionX="-45" positionY="0" width="128" height="118"/>
         <element name="Vision" positionX="503.41015625" positionY="-88.8828125" width="149.98046875" height="73"/>
+        <element name="Shopping" positionX="162" positionY="36" width="128" height="73"/>
     </elements>
 </model>

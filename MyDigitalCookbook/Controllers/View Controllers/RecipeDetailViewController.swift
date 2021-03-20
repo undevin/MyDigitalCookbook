@@ -13,7 +13,6 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var recipeItemTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -50,10 +49,6 @@ class RecipeDetailViewController: UIViewController {
         recipeItemTextField.text = ""
     }
     
-    @IBAction func editButtonTapped(_ sender: Any) {
-        self.tableView.isEditing.toggle()
-    }
-    
     @IBAction func recipeSegmentedController(_ sender: UISegmentedControl) {
         guard let recipe = recipe else { return }
         switch sender.selectedSegmentIndex {
@@ -87,12 +82,14 @@ class RecipeDetailViewController: UIViewController {
         recipeNameTextField.resignFirstResponder()
         recipeItemTextField.resignFirstResponder()
         view.addGestureRecognizer(tap)
-        self.tableView.isEditing = false
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         addButton.layer.cornerRadius = 10
         recipeNameTextField.autocapitalizationType = .words
         recipeItemTextField.autocapitalizationType = .sentences
+        
         guard let recipe = recipe else { return }
         IngredientController.shared.fetchIngredients(predicate: NSPredicate(format: "recipe == %@", recipe))
     }
@@ -157,7 +154,7 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch recipeSegmentControl.selectedSegmentIndex {
         case 0:
-            if editingStyle == .delete {
+            if editingStyle == .insert {
                 let ingredient = IngredientController.shared.ingredients[indexPath.row]
                 IngredientController.shared.deleteIngredient(name: ingredient)
                 tableView.deleteRows(at: [indexPath], with: .fade)
@@ -174,21 +171,5 @@ extension RecipeDetailViewController: UITableViewDelegate, UITableViewDataSource
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if recipeSegmentControl.selectedSegmentIndex == 0 {
-            let moved = IngredientController.shared.ingredients[sourceIndexPath.row]
-            IngredientController.shared.ingredients.remove(at: sourceIndexPath.row)
-            IngredientController.shared.ingredients.insert(moved, at: destinationIndexPath.row)
-        } else {
-            let moved = DirectionController.shared.directions[sourceIndexPath.row]
-            DirectionController.shared.directions.remove(at: sourceIndexPath.row)
-            DirectionController.shared.directions.insert(moved, at: destinationIndexPath.row)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
     }
 }//End of Extension
