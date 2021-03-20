@@ -62,17 +62,9 @@ class ShoppingListViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    func showErrorAlert() {
-        let errorAlert = UIAlertController(title: "Whoops!", message: "Please enter an item in the text field", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
-        
-        errorAlert.addAction(confirmAction)
-        self.present(errorAlert, animated: true, completion: nil)
-    }
 }//End of Class
 
-// MARK: - Extension
+// MARK: - Extensions
 extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ShoppingListController.shared.items.count
