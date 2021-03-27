@@ -130,12 +130,14 @@ extension RecipeListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
+        self.searchBar.showsCancelButton = false
         isSearching = false
         resultsArray = RecipeController.shared.recipes
         self.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
         isSearching = true
     }
     
