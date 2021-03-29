@@ -17,6 +17,7 @@ Need to add a quick recipe? Use your camera to scan the recipe page and save it 
 <img src="https://user-images.githubusercontent.com/30535541/110221125-fc1b4200-7e8f-11eb-8383-496f6ef42b5d.png" width="275" height="600">
 
 With the newly added shopping list feature, you can make sure you got everything at the store to make that perfect dish.
+</br></br>
 <img src="https://user-images.githubusercontent.com/30535541/112781075-c4776400-900f-11eb-851a-b98503e908da.png" width="275" height="600">
 
 Never go without your cookbook again. MyDigitCookbook use your iCloud account to backup and restore your cookbook wherever you are, whatever device you are on. It works on your iPhone, iPad, or iPod Touch.
