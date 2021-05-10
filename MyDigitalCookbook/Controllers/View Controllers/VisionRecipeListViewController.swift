@@ -108,12 +108,14 @@ extension VisionRecipeListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
+        self.searchBar.showsCancelButton = false
         visionIsSearching = false
         visionResultsArray = VisionController.shared.visionRecipes
         self.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
         visionIsSearching = true
     }
     
